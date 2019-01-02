@@ -1,0 +1,120 @@
+<!doctype html><!-- 浏览器申明,这是一个html的网页,html5-->
+<html><!-- 页面的根目录-->
+	<head><!-- 储存页面基本信息(s)(灵魂)-->
+		<meta charset='utf-8'><!-- 单标签: meta: 元标签(存储单个信息的地方) utf-8: 支持中文的万国码-->
+		<title>叶zhadan</title>
+		<meta name='keywords' content=''><!-- 页面的关键词-->
+		<meta name='description' content=''><!-- 页面广告位-->
+		<style>
+			body,p,h1,h2,h3,h4,ul{
+				margin: 0;
+			}
+			ul{
+				padding: 0;
+				list-style: none;
+			}
+			img{
+				display: block;
+			}
+			input{
+				outline: none;
+			}
+			table{
+				border-collapse: collapse;
+			}
+			table,th,table td{
+				padding: 0;
+			}
+			/* 样式初始化默认配置*/
+			div{
+				margin: 100px auto;
+				width: 300px;
+			    height: 600px;
+			}
+			div input{
+				position: relative;
+				top: 130px;
+				padding: 0;
+				height: 100px;
+				width: 300px;
+				border: none;
+				background-color: #ccc;
+			}
+            ul{
+			   display: flex;
+			   flex-flow: row wrap;
+			   justify-content: space-around;
+			   align-content: flex-end;
+			   height: 600px;
+			   border: 1px solid #000;
+			   background-color: #eee;
+		   }
+           ul>li{
+			   margin: 20px 0;
+			   width: 80px;
+			   line-height: 50px;
+			   text-align: center;
+			   background-color: #aaa;
+			   cursor: pointer;
+			   transition: .3s;
+		   }
+		   ul>li:hover{
+				transform: scale(1.1);
+				
+		   }
+		</style>
+	</head>
+	<body><!-- 主体内容展示(肉体)-->
+		<div>
+			<input type="text">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li class='add'>+</li>
+				<li>0</li>
+				<li class='min'>-</li>
+				<li class='ride'>/</li>
+				<li class='equal'>=</li>
+				<li class='zero'>C</li>
+			</ul>
+		</div>
+		<script>
+			let a=0
+			let b=0
+            let aValue = document.querySelectorAll('ul li:not([class])');
+			let input =document.querySelector('input');
+			let add = document.getElementsByClassName('add')[0];
+			let min = document.getElementsByClassName('min')[0];
+			let ride = document.getElementsByClassName('ride')[0];
+			let equal = document.getElementsByClassName('equal')[0];
+			let zero = document.getElementsByClassName('zero')[0];
+			for(let i=0;i<10;i++){
+				aValue[i].onclick=function(){
+					input.value+=aValue[i].innerHTML
+				}
+			}
+			let type;
+			add.onclick=function(){
+				a = input.value*1;
+				type= 1;
+				input.value=""
+			}
+			min.onclick=function(){
+				a= input.value*1
+				type= -1;
+				input.value=""
+			}
+			equal.onclick=function(){
+				b = input.value*type
+				input.value= a+b
+			}
+        </script>
+	</body>
+</html>

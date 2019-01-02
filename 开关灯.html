@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .gamearea {
+      display: block;
+      margin: 100px auto;
+      width: 700px;
+      height: 700px;
+      border: 1px black solid;
+    }
+
+    .gamearea .line {
+      width: 700px;
+      height: 100px;
+    }
+
+    .gamearea .line li {
+      float: left;
+      width: 100px;
+      height: 100px;
+      box-shadow: 0px 0px 10px #ccc inset;
+    }
+
+    .gamearea .line .on {
+      background-color: red
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gamearea">
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="line">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <script>
+    //需求，点击一个盒子，周围(包括自己)都会变色，红变白白变红
+    let ali = document.querySelectorAll(".line li")
+    
+    function change(num){
+      if(!ali[num]) return 
+      if(ali[num].className == "on"){
+        ali[num].className = ""
+      }else{
+        ali[num].className="on"
+      }
+    }
+    for(let i =0 ;i< ali.length; i++){
+      ali[i].onclick = function(){
+        if(i%7<6){change(i+1)}
+        if(i%7>0){change(i-1)}
+        change(i)
+        change(i+7)
+        change(i-7)
+      }
+    }
+  </script>
+</body>
+
+</html>

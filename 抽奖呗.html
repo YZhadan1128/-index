@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywrods" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,p,h1,h2,h3,h4,ul{
+				margin: 0;
+        }
+        ul{
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            display: block;
+        }
+        input{
+            outline: none;
+        }/* 样式初始化默认配置*/
+        .content{
+            position: relative;
+            margin: 100px auto 0;
+            width: 400px;
+        }
+        .content .choose{
+            height: 400px;
+        }
+        .content .choose>li{
+            float: left;
+            width: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: rgba(255,255,255,.7);
+            transition: .2s;
+        }
+        .content .choose>li:nth-child(1){
+            background-color: rgb(241, 104, 104);
+        }
+        .content .choose>li:nth-child(2){
+            background-color: rgb(176, 235, 67);
+        }
+        .content .choose>li:nth-child(3){
+            background-color: rgba(24, 140, 185, 0.836);
+        }
+        .content .choose>li:nth-child(4){
+            background-color: rgba(99, 89, 89, 1);
+        }
+        .content .start-end{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .content .start-end>li{
+            margin-top: 30px;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .content .pointer:before{
+            content:"";
+            position: absolute;
+            top: -5px;
+            left: -8px;
+            border-style: solid;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent blue transparent transparent;
+            
+        }
+        .content .pointer:after{
+            content:"";
+            position: absolute;
+            right: -10px;
+            top: -5px;
+            width: 20px;
+            height: 20px;
+            background-color: #aaa;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul class="choose">
+            <li>
+                一等奖: 50元
+            </li>
+            <li>
+                二等奖: 20元
+            </li>
+            <li>
+                三等奖: 8元
+            </li>
+            <li>
+                谢谢惠顾
+            </li>
+        </ul>
+        <ul class="start-end">
+            <li>开始</li>
+            <li>付钱继续</li>
+        </ul>
+    </div>
+    
+    <script>
+        function _$(str,bool=true){
+            return document["querySelector"+(bool?"All":"")](str)
+        }
+        let start = _$(".start-end li")[0],
+            end = _$(".start-end li")[1],
+            poi = _$(".content .pointer",false)
+        let liO = _$(".choose li")[0],
+            liB = _$(".choose li")[1],
+            liC = _$(".choose li")[2],
+            liD = _$(".choose li")[3],
+            li = _$(".choose li")
+            
+        
+        
+        function zhongjiang() {
+            function en(){
+                for(i of li){
+                    i.style.cssText= "border: none"
+                }
+            }
+            en()
+            if (Math.random() >= 0.99) {
+                alert("恭喜中一等奖 50元")
+                liO.style.cssText="transform: scale(1.2);"
+                
+            } else if (Math.random() >= 0.97) {
+                if (Math.random()< 0.99) {
+                    alert("恭喜中二等奖 20元")
+                    liB.style.cssText="transform: scale(1.2);"
+                }
+            } else if (Math.random() >= 0.95) {
+                if (Math.random() < 0.98) {
+                    alert("恭喜中三等奖 8元")
+                    liC.style.cssText="transform: scale(1.2);"
+                }
+            } else {
+                console.log("谢谢惠顾 两元再抽一次")
+                liD.style.cssText="transform: scale(1.2);"
+            }
+            end.onclick=function(){
+                alert("支付宝是152xxxxxxxx")
+                en()
+            }
+        }
+        start.onclick= zhongjiang
+        
+        
+        
+    </script>
+</body>
+</html>

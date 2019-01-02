@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content{
+            margin: 100px auto;
+            width: 500px;
+        }
+        .content textarea[name="login"]{
+            width: 500px;
+            height: 300px;
+            resize: none;
+        }
+        .content span{
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 0 1px;
+            line-height: 25px;
+            vertical-align: -3px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <textarea name="login" id="" cols="30" rows="10"></textarea>
+        <input type="text" placeholder="需要查找">
+        <input type="text" placeholder="需要变换">
+        <span>确认替换</span>
+    </div>
+    <script>
+        function _$(str,bool=true){
+            return document["querySelector"+(bool?"All":"")](str)
+        }
+        let login = _$("textarea",false),
+            input = _$("input"),
+            span = _$("span",false)
+        
+        span.onclick=function(){
+            lookWords()
+            replaceWords()
+        }
+        function lookWords(){
+           if(login.value.match(input[0].value)!= undefined){
+                return  input[0].value
+            }  
+        }
+        
+        function replaceWords(){
+           login.value = login.value.replace(lookWords(),input[1].value)
+        }
+
+        
+
+        
+        
+        
+
+        //需求分析
+        /*
+            1.输入文字
+
+            
+
+            2.输入文字替换
+
+            3. 确定
+        */
+    </script>
+</body>
+</html>
